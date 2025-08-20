@@ -43,10 +43,10 @@ export default function Navbar({
           <input type="checkbox" checked={isDark} onChange={toggleTheme} />
 
           {/* Icon saat dark mode aktif */}
-          <SunIcon className="swap-on h-6 w-6" />
+          <SunIcon className="swap-on h-6 w-6 text-warning" />
 
           {/* Icon saat light mode aktif */}
-          <MoonIcon className="swap-off h-6 w-6" />
+          <MoonIcon className="swap-off h-6 w-6 text-blue-500" />
         </label>
 
         <button className="btn btn-ghost btn-circle">
