@@ -2,9 +2,8 @@ import PageWrapper from "../../components/UiComponents/PageWrapper";
 import Header from "../../components/UiComponents/Header";
 
 // Components
-import HeaderProfile from "../../components/ProfileComponent/HeaderProfile";
+import AccountInformation from "../../components/ProfileComponent/AccountInformation";
 import PersonalInformation from "../../components/ProfileComponent/PersonalInformation";
-import AddressInformation from "../../components/ProfileComponent/AddressInformation";
 
 function ProfilePage() {
   return (
@@ -12,9 +11,8 @@ function ProfilePage() {
       <Header>PROFILE</Header>
 
       <div>
-        <HeaderProfile />
         <PersonalInformation />
-        <AddressInformation />
+        <AccountInformation />
       </div>
     </PageWrapper>
   );

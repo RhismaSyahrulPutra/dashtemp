@@ -17,7 +17,7 @@ export default function Button({
   block = false,
   active = false,
   disabled = false,
-  shape = "square",
+  shape = "none", // default ubah jadi "none"
   as = "button", // default button, bisa "a"
   href,
   target,
@@ -25,6 +25,7 @@ export default function Button({
 }) {
   const baseClass = "btn";
 
+  // style type
   let styleClass = "";
   if (styleType === "soft") styleClass = "btn-soft";
   else if (styleType === "outline") styleClass = "btn-outline";
@@ -32,14 +33,23 @@ export default function Button({
   else if (styleType === "ghost") styleClass = "btn-ghost";
   else if (styleType === "link") styleClass = "btn-link";
 
+  // size
   const sizeClass = size ? `btn-${size}` : "";
-  const shapeClass = shape === "circle" ? "btn-circle" : "btn-square";
+
+  // shape
+  let shapeClass = "";
+  if (shape === "circle") shapeClass = "btn-circle";
+  else if (shape === "square") shapeClass = "btn-square";
+  // kalau "none", biarin kosong → biar button ikut panjang teks
+
+  // modifiers
   const modifiers = [
     block && "btn-block",
     active && "btn-active",
     disabled && "btn-disabled",
   ].filter(Boolean);
 
+  // final className
   const className = [
     baseClass,
     styleClass,

@@ -1,3 +1,8 @@
+// PUBLIC & AUTH
+import WelcomePage from "../pages/WelcomePage/WelcomePage";
+import SignInPage from "../pages/AuthenticationPage/SignInPage";
+import SignUpPage from "../pages/AuthenticationPage/SignupPage";
+
 import Dashboard from "../pages/DashboardPage/Dashboard";
 
 // PROFILE PAGES
@@ -16,15 +21,16 @@ import BarChartPage from "../pages/Chart/BarChartPage";
 import PieChartPage from "../pages/Chart/PieChartPage";
 
 // UI PAGES
-// AUTHENTICATION PAGE
-import SignInPage from "../pages/AuthenticationPage/SignInPage";
-import SignupPage from "../pages/AuthenticationPage/SignupPage";
-import ResetPassword from "../pages/AuthenticationPage/ResetPassword";
-import TwoStepVerification from "../pages/AuthenticationPage/TwoStepVerification";
 
-const pageRoutes = [
+export const publicRoutes = [
+  { path: "/", element: <WelcomePage /> },
+  { path: "/sign-in", element: <SignInPage /> },
+  { path: "/sign-up", element: <SignUpPage /> },
+];
+
+export const dashboardRoutes = [
   // DASHBOARD PAGE
-  { path: "/", element: <Dashboard /> },
+  { path: "/dashboard", element: <Dashboard /> },
 
   // PROFILE PAGES
   { path: "/profile", element: <ProfilePage /> },
@@ -39,12 +45,4 @@ const pageRoutes = [
   { path: "/chart/line-chart", element: <LineChartPage /> },
   { path: "/chart/bar-chart", element: <BarChartPage /> },
   { path: "/chart/pie-chart", element: <PieChartPage /> },
-
-  // AUTHENTICATION PAGES
-  { path: "/auth/sign-in", element: <SignInPage /> },
-  { path: "/auth/sign-up", element: <SignupPage /> },
-  { path: "/auth/reset-password", element: <ResetPassword /> },
-  { path: "/auth/two-step-verification", element: <TwoStepVerification /> },
 ];
-
-export default pageRoutes;

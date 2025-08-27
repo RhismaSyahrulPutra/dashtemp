@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -9,6 +10,7 @@ import {
   SunIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Navbar({
   isSidebarOpen,
@@ -17,6 +19,13 @@ export default function Navbar({
   toggleTheme,
 }) {
   const isDark = theme === "dark";
+  const navigate = useNavigate();
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/sign-in");
+  };
 
   return (
     <header className="navbar bg-base-100 shadow px-6">
@@ -71,7 +80,10 @@ export default function Navbar({
               </Link>
             </li>
             <li>
-              <button onClick={() => console.log("Logout clicked")}>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100"
+              >
                 <ArrowRightOnRectangleIcon className="h-5 w-5" />
                 Logout
               </button>

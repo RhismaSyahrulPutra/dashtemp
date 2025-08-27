@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const sidebarLinks = [
-  { name: "Dashboard", path: "/", icon: Squares2X2Icon },
+  { name: "Dashboard", path: "/dashboard", icon: Squares2X2Icon },
 
   { name: "Profile", path: "/profile", icon: UserIcon },
 
@@ -45,8 +45,6 @@ const sidebarLinks = [
     children: [
       { name: "Sign In", path: "/auth/sign-in" },
       { name: "Sign Up", path: "/auth/sign-up" },
-      { name: "Reset Password", path: "/auth/reset-password" },
-      { name: "TSV", path: "/auth/two-step-verification" },
     ],
   },
 ];
