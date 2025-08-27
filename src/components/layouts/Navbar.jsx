@@ -3,7 +3,7 @@ import {
   Bars3Icon,
   XMarkIcon,
   BellIcon,
-  Cog6ToothIcon,
+  UserIcon,
   UserCircleIcon,
   ArrowRightOnRectangleIcon,
   MoonIcon,
@@ -58,10 +58,6 @@ export default function Navbar({
           <MoonIcon className="swap-off h-6 w-6 text-blue-500" />
         </label>
 
-        <button className="btn btn-ghost btn-circle">
-          <BellIcon className="h-6 w-6" />
-        </button>
-
         {/* Profile dropdown */}
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -74,15 +70,9 @@ export default function Navbar({
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-44"
           >
             <li>
-              <Link to="/settings">
-                <Cog6ToothIcon className="h-5 w-5" />
-                Settings
-              </Link>
-            </li>
-            <li>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-red-500"
               >
                 <ArrowRightOnRectangleIcon className="h-5 w-5" />
                 Logout

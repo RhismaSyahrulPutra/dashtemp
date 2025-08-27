@@ -1,51 +1,46 @@
-// src/config/sidebarLinks.jsx
 import {
   Squares2X2Icon,
-  CalendarDaysIcon,
   UserIcon,
-  DocumentTextIcon,
-  ClipboardDocumentCheckIcon,
+  BookOpenIcon,
+  CheckCircleIcon,
   ChartBarIcon,
-  PuzzlePieceIcon,
-  LockClosedIcon,
+  CameraIcon,
 } from "@heroicons/react/24/outline";
 
 const sidebarLinks = [
   { name: "Dashboard", path: "/dashboard", icon: Squares2X2Icon },
-
   { name: "Profile", path: "/profile", icon: UserIcon },
-
   {
-    name: "Task",
-    icon: ClipboardDocumentCheckIcon,
+    name: "Courses",
+    icon: BookOpenIcon,
     children: [
-      { name: "List", path: "/task/List" },
-      { name: "Kanban", path: "/task/Kanban" },
+      {
+        name: "Available Course",
+        path: "/courses/available-courses",
+        icon: BookOpenIcon,
+      },
+      {
+        name: "Enrolled Course",
+        path: "/courses/enrolled-courses",
+        icon: CheckCircleIcon,
+      },
     ],
   },
   {
-    name: "Tables",
-    icon: ClipboardDocumentCheckIcon,
-    children: [{ name: "Simple Table", path: "/table/simple-table" }],
-  },
-
-  {
-    name: "Charts",
+    name: "Quiz",
     icon: ChartBarIcon,
     children: [
-      { name: "Line Chart", path: "/chart/line-chart" },
-      { name: "Bar Chart", path: "/chart/bar-chart" },
-      { name: "Pie Chart", path: "/chart/pie-chart" },
+      { name: "A - E", path: "/quiz/a-e" },
+      { name: "F - J", path: "/quiz/f-j" },
+      { name: "K - O", path: "/quiz/k-o" },
+      { name: "P - T", path: "/quiz/p-t" },
+      { name: "U - Z", path: "/quiz/u-z" },
     ],
   },
-
   {
-    name: "Authentication",
-    icon: LockClosedIcon,
-    children: [
-      { name: "Sign In", path: "/auth/sign-in" },
-      { name: "Sign Up", path: "/auth/sign-up" },
-    ],
+    name: "Camera",
+    path: "/camera",
+    icon: CameraIcon,
   },
 ];
 

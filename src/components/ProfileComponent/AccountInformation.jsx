@@ -5,6 +5,7 @@ import InputLabel from "../FormComponents/InputLabel";
 import Button from "../UiComponents/Button";
 import { supabase } from "../../lib/supabaseClient";
 import Loading from "../UiComponents/Loading";
+import { toast } from "react-hot-toast";
 
 function AccountInformation() {
   const [isEditing, setIsEditing] = useState(false);
@@ -36,7 +37,7 @@ function AccountInformation() {
         setFormData({ email: data.email, password: "", confirmPassword: "" });
       } catch (err) {
         console.error("Error fetching user data:", err.message);
-        alert("Gagal mengambil data user");
+        toast.error("Gagal mengambil data user");
       } finally {
         setLoading(false);
       }
@@ -52,7 +53,10 @@ function AccountInformation() {
 
   const handleUpdate = async () => {
     const userId = getUserId();
-    if (!userId) return alert("User tidak ditemukan");
+    if (!userId) {
+      toast.error("User tidak ditemukan");
+      return;
+    }
 
     const updates = {};
 
@@ -60,13 +64,15 @@ function AccountInformation() {
 
     if (formData.password) {
       if (formData.password !== formData.confirmPassword) {
-        return alert("Password dan Confirm Password harus sama");
+        toast.error("Password dan Confirm Password harus sama");
+        return;
       }
       updates.password = bcrypt.hashSync(formData.password, 10);
     }
 
     if (Object.keys(updates).length === 0) {
-      return alert("Tidak ada perubahan yang akan disimpan");
+      toast("Tidak ada perubahan yang akan disimpan");
+      return;
     }
 
     setLoading(true);
@@ -77,7 +83,7 @@ function AccountInformation() {
         .eq("user_id", userId);
       if (error) throw error;
 
-      alert("Data berhasil diperbarui");
+      toast.success("Data berhasil diperbarui");
 
       const { data } = await supabase
         .from("users")
@@ -89,7 +95,7 @@ function AccountInformation() {
       setIsEditing(false);
     } catch (err) {
       console.error(err);
-      alert("Gagal update: " + err.message);
+      toast.error("Gagal update: " + err.message);
     } finally {
       setLoading(false);
     }

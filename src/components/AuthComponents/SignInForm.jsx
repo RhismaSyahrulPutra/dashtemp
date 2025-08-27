@@ -8,6 +8,7 @@ import Button from "../UiComponents/Button";
 import Loading from "../UiComponents/Loading";
 import { useAuth } from "../../hooks/useAuth";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-hot-toast";
 
 function SignInForm() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ function SignInForm() {
     e.preventDefault();
 
     if (!email || !password) {
-      alert("Email dan Password harus diisi");
+      toast.error("Email dan Password harus diisi");
       return;
     }
 
@@ -52,9 +53,10 @@ function SignInForm() {
       }
 
       login(data, rememberMe);
+      toast.success("Login berhasil");
       navigate("/dashboard");
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     } finally {
       setLoading(false);
     }

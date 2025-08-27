@@ -6,6 +6,7 @@ import InputLabel from "../FormComponents/InputLabel";
 import Button from "../UiComponents/Button";
 import Loading from "../UiComponents/Loading";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-hot-toast";
 
 function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -19,7 +20,7 @@ function SignUpForm() {
     e.preventDefault();
 
     if (!username || !email || !password) {
-      alert("Semua field harus diisi");
+      toast.error("Semua field harus diisi");
       return;
     }
 
@@ -40,10 +41,10 @@ function SignUpForm() {
         .insert([{ user_id: userId }]);
       if (profileError) throw profileError;
 
-      alert("Sign Up berhasil! Silakan login.");
+      toast.success("Sign Up berhasil! Silakan login.");
       navigate("/sign-in");
     } catch (err) {
-      alert(err.message);
+      toast.error(`${err.message}`);
     } finally {
       setLoading(false);
     }
